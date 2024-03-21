@@ -57,12 +57,42 @@ public class Person {
         }
 
     }
-    public void returnBook(Book book) {
+
+
+    public void returnBook(Book book) { // book2    [book1,book2,book3]
+        //
+        if (book == null) {
+            throw new IllegalArgumentException("Book was null.");
+        }
+
+        int index = -1;
+        for (int i = 0; i < borrowedBooks.length; i++) {
+            if (borrowedBooks[i].getId().equals(book.getId())){
+                index = i;
+                break;
+            }
+        }
+        if (index == -1){
+            throw new IllegalArgumentException("Book not found.");
+        }
+
+        // create a new array that has length - 1
+        Book[] newArray = new Book[borrowedBooks.length -1]; // [book1, book3]
+        int counter = 0;
+        for (int i = 0; i < borrowedBooks.length; i++) { //    [book1,book2,book3]
+          if (i == index) continue;
+          counter++;
+          newArray[counter] = borrowedBooks[i];
+        }
+        borrowedBooks = newArray; //  // [book1, book3]
+        book.setBorrower(null);
+
 
     }
 
+
     public String getPersonInformation() {
-        return " ID: " + id + ", Name: " + firstName + " " + lastName + "NumberOfBorrowedBooks: " + borrowedBooks.length ;
+        return " ID: " + id + ", Name: " + firstName + " " + lastName + "NumberOfBorrowedBooks: " + borrowedBooks.length;
     }
 
 

@@ -27,6 +27,10 @@ public class Book {
 
     }
 
+    public String getId() {
+        return id;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -56,24 +60,23 @@ public class Book {
     }
      */
 
-    public void setBorrower(Person borrower) {
+    public void setBorrower(Person borrower) { // null
 
 
-        if (borrower == null) {
+        /*if (borrower == null) {
             this.available = true;
         } else {
-            this.borrower = borrower;
             this.available = false;
-        }
-
-
+        }*/
+        this.borrower = borrower;
+        this.available = (borrower == null);
 
 
     }
 
     public String getBookInformation() {
 
-        String bookInfo = "ID: " + id + "Title: " + title + " Author: " + author;
+        String bookInfo = "ID: " + id + "Title: " + title + " Available: " + available;
         if (borrower == null) {
             bookInfo = bookInfo + ", not borrowed";
         } else {

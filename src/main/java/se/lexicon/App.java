@@ -27,9 +27,12 @@ public class App {
         System.out.println(book1.getBookInformation());
 
         // Return the borrowed book
+        person.returnBook(book1);
 
         // Display person information after returning the book
+        System.out.println(person.getPersonInformation());
         // Display book information after borrowing a book
+        System.out.println(book1.getBookInformation());
 
     }
 
